@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Belajar Asynchronus</h1>
+
+    <h2>AJAX</h2>
+    <p>AJAX adalah asynchronus Javascript and Xml</p>
+    <p>AJAX dapat digunakan untuk mengambil data dari database ketika website sudah dijalankan</p>
+    <p>AJAX dapat digunakan untuk mengubah tampilan website tanpa perlu me-reload ulang website</p>
+    <p>AJAX dapat digunakan untuk mengirim data ke server secara asynchronus dibackground</p>
+
+    <script>
+
+        //Cara membuat ajax
+        const ajax = new XMLHttpRequest()
+
+        ajax.open("GET","https://api.pokemontcg.io/v2/cards")
+        ajax.send()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Ajax</title>
+    <script>
+
+        function getProductUrl(keyword){
+            return `https://www.blibli.com/backend/search/products?searchTerm=${keyword}`
+        }
+
+       const getProducts =(keyword,succesGetProduct,errorGetProduct)=>{
+            //Ajax Code
+            const ajax = new XMLHttpRequest()
+            const url = getProductUrl(keyword)
+             ajax.open("GET",url)
+             ajax.send()
+            
+
+            //Tidak bisa dilakukan secara synchronus
+            // ini adalah contoh salah
+
+        //    const response = JSON.parse(ajax.responseText)
+        //    console.log(response)
+        
+
+//          Menggunakan ajax Callback
+        ajax.onload = ()=>{
+            if (ajax.status === 200) {
+                const data = JSON.parse(ajax.responseText)
+                succesGetProduct(data)
+            }else{
+                errorGetProduct()
+            }
+        }
+    }
+
+    function ErorGetProducts(){
+        console.log("<==== Eror in get products")
+        alert("Error in get Products")
+    }
+
+    function dispayProducts(data){
+        data.data.products.forEach(product => {
+            displayProduct(product)
+        });
+    }
+
+    function displayTable(data){
+        data.data.products.forEach(product=>{
+            displayTable(product)
+        })
+    }
+    function displayProduct(product){
+            const li = document.createElement('li')
+            li.textContent = product.name
+
+            const ul = document.getElementById('products')
+            ul.appendChild(li)
+        }
+
+
+
+        function clearProducts(){
+            const ul = document.getElementById("products")
+            ul.textContent = ""
+        }
+
+        function clearTable(){
+            const table = document.getElementById('table')
+            table.textContent = ""
+        }
+
+        function displayTable(product){
+           
+        }
+
+       
+
+        function buttonClick(){
+            getProducts(document.getElementById("keyword").value,(data)=>{
+                clearProducts()
+                dispayProducts(data)
+                clearTable()
+                dispayProducts(data)
+            },()=>{
+                ErorGetProducts()
+            })
+        }
+
+    </script>
+</head>
+<body>
+
+    <input type="text" name="keyword" id="keyword">
+    <button onclick="buttonClick()">Search</button>
+
+    <ul id="products">
+
+    </ul>
+    
+    <table id="table">
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+
+</body>
+</html>

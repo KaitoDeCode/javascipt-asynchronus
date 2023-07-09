@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Belajar Asynchronus</h1>
+
+    <h2>Ajax Callback</h2>
+    <p>Ajax biasanya digunakan untuk mengirim data atau menerima data ke sertver</p>
+    <p>Tiap request kita selalu ingin mendapatkan response dari server</p>
+    <p>kita tidak dapat langsung mendapatkan data dari server lewat ajax karena ajax berlangsung secara asynchronus, sehingga kita perlu menunggu proses ajax selesai dijalankan</p>
+    <p>untuk mendapatkan informasi dari ajax, kita perlu menggunakan AJAX Callback,yang akan dieksekusi setelah proses asynchronus ajax selesai dilakukan</p>
+
+    <script>
+        // contoh menggunakan ajax Callback
+
+        //menginvoke ajax
+        const ajax = new XMLHttpRequest();
+
+        //ajax callback
+        ajax.onload = ()=> {
+            const res = JSON.parse(ajax.responseText)
+            console.log(res)
+        }
+
+        //get Api
+        ajax.open("GET","https://www.blibli.com/backend/search/products?searchTerm=buku")
+        ajax.send()
+
+    </script>
+
+
+</body>
+</html>

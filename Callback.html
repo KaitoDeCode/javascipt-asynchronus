@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Belajar Asynchronus</h1>
+
+    <h2>Apa Itu Callback</h2>
+    <p>Callback Adalah Proses memanggil kembali program yang ada didalam proses async</p>
+    <p>Callback Biasanya dibuat dalam bentuk function dan akan dijalankan ketika proses asynchronus selesai</p>
+
+
+    <h2>Contoh Async Method</h2>
+    <ol>
+        <li>setInterval <dl>digunakan untuk menjalankan program dalam proses async selama periode waktu tertenu</dl></li>
+        <li>setTimeout <dl>digunakan untuk menajalankan program sekali dalam waktu tertentu</dl></li>
+    </ol>
+
+    <h2 id="contoh"></h2>
+
+
+
+
+    <script>
+        const contoh = document.getElementById('contoh')
+        //contoh setTimeout
+    setTimeout(()=>{
+        contoh.textContent = "Halo ini contoh callback"
+    },3000)
+
+        //contoh setInterval
+    setInterval(function(){
+        contoh.style.color = "red"
+        setTimeout(()=>{
+            contoh.style.color = "blue"
+        },1000)
+    },2000)
+   
+    
+
+    </script>
+</body>
+</html>

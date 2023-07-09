@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Worker</title>
+    <script>
+        const worker = new Worker("web-worker.js")
+        worker.addEventListener("message",function(event){
+            console.log(`Mendapatkan data dari Web Worker => ${event.data}`)
+       })
+
+        function buttonClick() {
+            console.log("Start Log");
+            worker.postMessage(20000)
+            console.log("Finish Log");
+        }
+    </script>
+</head>
+<body>
+<button onclick="buttonClick()">Search Products</button>
+</body>
+</html>
+
+</body>
+</html>
